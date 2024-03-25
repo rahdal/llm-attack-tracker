@@ -2,7 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-url = 'http://export.arxiv.org/api/query?search_query=ti:llm+AND+ti:attack&sortBy=lastUpdatedDate&sortOrder=descending&max_results=2'
+url = 'http://export.arxiv.org/api/query?search_query=ti:llm+AND+ti:attack&sortBy=lastUpdatedDate&sortOrder=descending&max_results=1'
 
 response = requests.get(url)
 response = response.text
@@ -35,7 +35,7 @@ if entry is not None:
     # Extract the published date
     published_elem = entry.find('{http://www.w3.org/2005/Atom}published')
     if published_elem is not None:
-        published_date = datetime.fromisoformat(published_elem.text)
+        published_date = published_elem.text
     else:
         published_date = "No published date found"
 
