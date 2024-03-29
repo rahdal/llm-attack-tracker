@@ -1,6 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime
+import uuid
 
 URL = 'http://export.arxiv.org/api/query?search_query=ti:llm+AND+ti:attack&sortBy=lastUpdatedDate&sortOrder=descending'
 
@@ -40,10 +41,13 @@ def get_recent_papers(num_papers:int = 1) -> dict:
         if published_elem is not None:
             paper_data['published_date'] = published_elem.text
 
+        # Add a unique id
+        paper_data['id'] = str(uuid.uuid4())
+
         papers.append(paper_data)
 
     return papers
 
-papers = get_recent_papers(10)
-for paper in papers:
-    print(paper)
+# papers = get_recent_papers(10)
+# for paper in papers:
+#     print(paper)
