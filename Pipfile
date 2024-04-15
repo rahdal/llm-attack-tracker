@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 requests = "*"
+flask-cors = "*"
+sentence-transformers = "*"
 
 [dev-packages]
 
