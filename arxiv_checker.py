@@ -6,6 +6,20 @@ import uuid
 URL = 'http://export.arxiv.org/api/query?search_query=ti:llm+AND+ti:attack&sortBy=lastUpdatedDate&sortOrder=descending'
 
 def get_recent_papers(num_papers:int = 1) -> dict:
+    """
+    Retrieves the most recent papers related to the topic "llm" and "attack" from the arXiv API.
+
+    Args:
+        num_papers (int): The number of recent papers to retrieve. Default is 1.
+
+    Returns:
+        dict: A list of dictionaries, where each dictionary represents a paper and contains the following information:
+            - 'title': The title of the paper.
+            - 'authors': A list of authors of the paper.
+            - 'url': The URL of the paper.
+            - 'published_date': The published date of the paper.
+            - 'id': A unique identifier for the paper.
+    """
     response = requests.get(URL)
     response = response.text
 

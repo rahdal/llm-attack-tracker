@@ -37,4 +37,4 @@ def categorize_text(text:str) -> str:
     return (categories[max_score_index], max_score)
 
 # Test the function
-print(categorize_text("Survey of Vulnerabilities in Large Language Models Revealed by Adversarial Attacks."))
+print(categorize_text("Red Teaming GPT-4V: Are GPT-4V Safe Against Uni/Multi-Modal Jailbreak Attacks"))
