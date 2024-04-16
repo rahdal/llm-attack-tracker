@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime
 import uuid
+from text_categorizer import categorize_text
 
 URL = 'http://export.arxiv.org/api/query?search_query=ti:llm+AND+ti:attack&sortBy=lastUpdatedDate&sortOrder=descending'
 
@@ -54,6 +55,11 @@ def get_recent_papers(num_papers:int = 1) -> dict:
         published_elem = entry.find('{http://www.w3.org/2005/Atom}published')
         if published_elem is not None:
             paper_data['published_date'] = published_elem.text
+
+        # Categorize the paper
+        if 'title' in paper_data:
+            category, score = categorize_text(paper_data['title'])
+            paper_data['category'] = category
 
         # Add a unique id
         paper_data['id'] = str(uuid.uuid4())
