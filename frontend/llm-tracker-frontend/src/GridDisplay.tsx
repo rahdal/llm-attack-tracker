@@ -5,6 +5,7 @@ const columns: GridColDef[] = [
   { field: 'title', headerName: 'Title', width: 350 },
   { field: 'authors', headerName: 'Authors', width: 250 },
   { field: 'published_date', headerName: 'Published Date', width: 180 },
+  { field: 'category', headerName: 'Category', width: 100 },
   {
     field: 'url',
     headerName: 'URL',
@@ -38,12 +39,12 @@ const DataTable = () => {
   }, []);
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: '100%', width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize="5"
-        checkboxSelection
+        //pageSize="5"
+        checkboxSelection={false}
       />
     </div>
   );
