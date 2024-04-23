@@ -37,7 +37,7 @@ const DataTable = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        // Adding the 'working' property to each row with a random value
+        // Adding the 'working' property to each row with a random value. This is a placeholder for future work.
         const rowsWithWorking = data.map(row => ({ ...row, working: Math.random() < 0.5 }));
         setRows(rowsWithWorking);
       } catch (error) {
